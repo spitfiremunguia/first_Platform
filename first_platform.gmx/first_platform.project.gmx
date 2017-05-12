@@ -5,9 +5,24 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprites name="player">
+      <sprite>sprites\spr_player_idle</sprite>
+      <sprite>sprites\spr_player_damage</sprite>
+      <sprite>sprites\spr_player_edge_grab</sprite>
+      <sprite>sprites\spr_player_walk</sprite>
+      <sprite>sprites\spr_player_exit</sprite>
+      <sprite>sprites\spr_player_jump</sprite>
+      <sprite>sprites\spr_player_mask</sprite>
+    </sprites>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <objects name="Player">
+      <object>objects\obj_player</object>
+    </objects>
+  </objects>
   <help>
     <rtf>help.rtf</rtf>
   </help>
