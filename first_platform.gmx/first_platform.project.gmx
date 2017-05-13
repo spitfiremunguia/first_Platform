@@ -15,6 +15,10 @@
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_mask</sprite>
     </sprites>
+    <sprites name="Assets">
+      <sprite>sprites\spr_solid</sprite>
+      <sprite>sprites\spr_dirt</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -22,7 +26,14 @@
     <objects name="Player">
       <object>objects\obj_player</object>
     </objects>
+    <objects name="Assets">
+      <object>objects\obj_dirt</object>
+      <object>objects\obj_solid</object>
+    </objects>
   </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_1</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
