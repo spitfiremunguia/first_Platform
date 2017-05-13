@@ -26,8 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>///crete_event
-h_speed=4;
-v_speed=4;
+h_speed=0;
+v_speed=0;
+spd=4;
+grv=1.5;
 </string>
           </argument>
         </arguments>
@@ -54,33 +56,62 @@ v_speed=4;
 var right=keyboard_check(vk_right);
 var left=keyboard_check(vk_left);
 var up=keyboard_check(vk_up);
-var down=keyboard_check(vk_down);
+var up_release=keyboard_check_released(vk_up);
+if(! place_meeting(x,y+1,obj_solid))
+{
+    v_speed+=grv;
+    ///control de altura de salto
+    if(up_release and v_speed &lt;-6)
+    {
+        v_speed=-6;
+    }
+}
+else
+{
+    v_speed=0;
+    ///Salto
+    if(up)
+    {
+        v_speed-=16;
+    }
+}
+
 ///Horizontal movement
 if(right and left)
 {
-    x=xprevious;
+    h_speed=0;
 }
-else if(right and !place_meeting(x+h_speed,y,obj_solid))
+else if(right)
 {
-    x+=h_speed;
+    h_speed=spd;
 }
-else if(left and !place_meeting(x-h_speed,y,obj_solid))
+else if(left)
 {
-    x-=h_speed;     
+    h_speed=-spd;     
 }
 ///Vertical Movement
-if(up and down)
+if(!right and ! left)
 {
-    y=yprevious;
+    h_speed=0;
 }
-else if(up and !place_meeting(x,y-v_speed,obj_solid))
+///Colisiones
+if(place_meeting(x+h_speed,y,obj_solid))
+{   while(!place_meeting(x+sign(h_speed),y,obj_solid)){
+        x+=sign(h_speed);
+    }
+    h_speed=0;
+}
+///Movimiento horizontal
+x+=h_speed;
+if(place_meeting(x,y+v_speed,obj_solid))
 {
-    y-=v_speed;
+    while(!place_meeting(x,y+sign(v_speed),obj_solid)){
+        y+=sign(v_speed);
+    }
+    v_speed=0;   
 }
-else if(down and !place_meeting(x,y+v_speed,obj_solid))
-{
-    y+=v_speed;
-}
+///Movimiento vertical
+y+=v_speed;
 
 
     
